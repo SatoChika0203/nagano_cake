@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
@@ -10,14 +11,14 @@ Rails.application.routes.draw do
   }
   
   scope module: :public do
-    resources :homes
+    root to: 'homes#top'
     resources :items
     resources :cart_items
   end
   # module: URLそのままで、ファイル構成（アクションとコントローラー）のみ指定のパスにしたい
   
   namespace :admin do
-    resources :homes
+    root to: 'homes#top'
     resources :items
   end
   # URLを分けるにはnamespaceを使用する
