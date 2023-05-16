@@ -6,6 +6,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      # default:レコードが追加された時、カラムに値が設定されなかった場合にデフォルトで格納される値を設定
 
       ## Recoverable
       t.string   :reset_password_token

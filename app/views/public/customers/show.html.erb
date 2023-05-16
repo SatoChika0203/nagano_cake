@@ -1,0 +1,14 @@
+<h1>customers#show</h1>
+
+<h2>name</h2>
+<span><%= @customer.last_name %></span><span><%= @customer.first_name %></span>
+
+<h2>email</h2>
+<%= @customer.email %>
+
+<div>
+<% if @customer.id == current_customer.id %>
+  <th><%= link_to "Edit", edit_customer_path(@customer.id), method: :get %></th>
+<%end%>
+</div>
+

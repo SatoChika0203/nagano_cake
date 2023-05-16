@@ -1,0 +1,8 @@
+<h1>items#index</h1>
+
+<% @items.each do |item| %>
+ <tr>
+    <td><%= link_to image_tag(get_image(100,100)), item_path(item.id) %></td>
+    <td><%= link_to item.title, item_path(item.id) %></td>
+</tr>
+<%end%>

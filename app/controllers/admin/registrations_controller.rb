@@ -3,6 +3,17 @@
 class Admin::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  def after_sign_in_path_for(resource)
+    flash[:notice]="Signed in successfully."
+    asmin_root_path
+    # ユーザー詳細ページに飛ぶ
+  end
+  
+  def after_sign_out_path_for(resource)
+    flash[:notice]="Signed out successfully."
+    root_path
+  end
+
 
   # GET /resource/sign_up
   # def new
