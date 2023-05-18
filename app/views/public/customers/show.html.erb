@@ -7,8 +7,6 @@
 <%= @customer.email %>
 
 <div>
-<% if @customer.id == current_customer.id %>
-  <th><%= link_to "Edit", edit_customer_path(@customer.id), method: :get %></th>
-<%end%>
+  <th><%= link_to "Edit", customers_information_edit_path, method: :get %></th>
 </div>
 

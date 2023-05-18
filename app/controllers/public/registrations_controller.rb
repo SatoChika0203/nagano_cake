@@ -5,7 +5,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   
   def after_sign_in_path_for(resource)
     flash[:notice]="Signed in successfully."
-    customer_path(current_customer.id)
+    customers_path
     # ユーザー詳細ページに飛ぶ
   end
   

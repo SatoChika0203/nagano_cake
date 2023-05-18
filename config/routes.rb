@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :customers,skip: [:passwords], controllers: {
+  devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
@@ -9,16 +9,35 @@ Rails.application.routes.draw do
   }
   # 登録とパスワード変更のルーティングを削除する
   
+  # module: URLそのままで、ファイル構成（アクションとコントローラー）のみ指定のパスにしたい
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
-    resources :customers
-    resources :items
-    resources :cart_items
-    resources :orders
+    resources :items, only: [:index, :show]
     resources :order_details
-  end
-  # module: URLそのままで、ファイル構成（アクションとコントローラー）のみ指定のパスにしたい
+    get '/customers/information/edit' => 'customers#edit', as: 'customers_information_edit'
+    resource :customers, except: [:edit] do
+      collection do
+        get 'confirm'
+        patch 'withdraw'
+      end
+      # resource :information, only: [:edit]
+    end
+    # get 'customers/information/edit' => 'public/customers#edit', as: 'customers_information_edit'
+   end
+   
+    resources :cart_items do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+    resources :orders do
+      collection do
+        post 'confirm'
+        get 'complete'
+      end
+    end
+  
   
   namespace :admin do
     root to: 'homes#top'

@@ -1,7 +1,7 @@
 <h1>public/customer#edit</h1>
 
 <div>
-<%= form_with model: @customer, url:customer_path, method: :patch do |f| %>
+<%= form_with model: @customer, url:customers_path, method: :patch do |f| %>
 <p>Last_name</p>
 <%= f.text_field :last_name %>
 <p>First_name</p>
