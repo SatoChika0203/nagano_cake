@@ -1,1 +1,15 @@
 <h1>items#show</h1>
+
+<h1><%= @item.name %>の詳細画面</h1>
+
+<p><%= image_tag @item.image, size:"300×300" %></p>
+
+<h2>商品名</h2>
+<p><%= @item.name %></p>
+
+<h2>商品説明文</h2>
+<p><%= @item.introduction %></p>
+
+<h2>価格</h2>
+<p><%= @item.price %></p>
+
