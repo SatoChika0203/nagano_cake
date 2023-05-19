@@ -1,1 +1,18 @@
 <h1>adimin/customer#show</h1>
+
+<h1>会員の詳細画面</h1>
+
+<p>id</p>
+<span><%= @customer.id %></span>
+<p>name</p>
+<span><%= @customer.last_name %></span><span><%= @customer.first_name %></span>
+<span><%= @customer.last_name_kana %></span><span><%= @customer.first_name_kana %></span>
+<p>adress</p>
+<%= @customer.postal_code %>
+<%= @customer.address %>
+<p>telephone_number</p>
+<%= @customer.telephone_number %>
+<p>is_deleted</p>
+<%= @customer.is_deleted %>
+
+<%= link_to "Edit", edit_admin_customer_path(@customer.id) %>
