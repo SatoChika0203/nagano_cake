@@ -1,5 +1,5 @@
 class Admin::AdminController < ApplicationController
-  before_action :authenticate_user!, except: [:top]
+  # before_action :authenticate_user!, except: [:top]
   
   def after_sign_in_path_for(resource)
     flash[:notice]="Signed in successfully."

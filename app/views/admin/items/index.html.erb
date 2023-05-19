@@ -1,3 +1,24 @@
 <h1>admin/items#index</h1>
 
 <%= link_to "商品の新規登録", new_admin_item_path %>
+
+<div>
+ <% @items.each do |item| %>
+ <% if item.is_sales == true %>
+ <div>
+  <span>
+  <% if item.image.attached? %>
+   <%= image_tag item.image, size: "100x100" %>
+  <% else %>
+   <%= image_tag 'default-image', size: "100x100" %>
+  <%end%>
+  </span>
+  <span><%= item.name %></span>
+ </div>
+ <div>
+ <%= item.introduction %>
+ <%= item.price %>
+ </div>
+<% end %>
+<% end %>
+</div>

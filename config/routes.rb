@@ -41,11 +41,17 @@ Rails.application.routes.draw do
   
   namespace :admin do
     root to: 'homes#top'
+    post '/items/new_items_information' => 'items#create', as: 'items_new_items_information'
     resources :customers
-    resources :items
     resources :orders
     resources :order_details
+    resources :items, except: [:create] do
+      collection do
+        patch 'sales'
+      end
+    end
   end
   # URLを分けるにはnamespaceを使用する
+  # adminがURLに入る
   # 会員側と管理者側によって、ルーティング(URL 等)をグループ分けして管理する
 end
