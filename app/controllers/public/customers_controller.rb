@@ -21,6 +21,10 @@ class Public::CustomersController < ApplicationController
     end
     
     def withdraw
+     current_customer.update(is_deleted: true)
+     # is_deletedカラムをtrueにupdateする事により、退会状態を作り出す
+     reset_session
+     redirect_to root_path
     end
  
  private

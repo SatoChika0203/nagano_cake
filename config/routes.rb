@@ -26,11 +26,12 @@ Rails.application.routes.draw do
     # get 'customers/information/edit' => 'public/customers#edit', as: 'customers_information_edit'
    end
    
-    resources :cart_items do
+    resources :cart_items, except: [:show, :new] do
       collection do
         delete 'destroy_all'
       end
     end
+    
     resources :orders do
       collection do
         post 'confirm'
