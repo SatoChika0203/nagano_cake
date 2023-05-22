@@ -24,7 +24,6 @@ Rails.application.routes.draw do
       # resource :information, only: [:edit]
     end
     # get 'customers/information/edit' => 'public/customers#edit', as: 'customers_information_edit'
-   end
    
     resources :cart_items, except: [:show, :new] do
       collection do
@@ -38,6 +37,10 @@ Rails.application.routes.draw do
         get 'complete'
       end
     end
+   
+   end
+   
+
   
   
   namespace :admin do

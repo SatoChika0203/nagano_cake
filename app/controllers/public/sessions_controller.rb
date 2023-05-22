@@ -6,7 +6,7 @@ class Public::SessionsController < Devise::SessionsController
   
   def after_sign_in_path_for(resource)
     flash[:notice]="Signed in successfully."
-    customers_path
+    items_path
   end
   
   def after_sign_out_path_for(resource)
@@ -25,8 +25,6 @@ protected
      # 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
      if @customer.is_deleted == true
        redirect_to new_customer_session_path
-     else
-       redirect_to customer_session_path
      end
     end
   end
