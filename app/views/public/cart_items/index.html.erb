@@ -11,7 +11,7 @@
       <th><%= nil %></th>
    </tr>
  </thead>
-  
+ <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete %>
  <tbody>
  <% @cart_items.each do |cart_item| %>
    <tr>
