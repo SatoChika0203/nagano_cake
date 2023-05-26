@@ -18,6 +18,14 @@
       <td><%= image_tag cart_item.item.image, size: "100x100" %><%= cart_item.item.name %></td>
       <td><%= cart_item.item.with_tax_price %></td>  <!--税込み単価（消費税の10%を加算）-->
       <td><%= cart_item.amount %></td>
+      <%= form_with model: @cart_items, url:cart_item_path(cart_item.id), method: :patch do |f| %>
+      <%= f.select :amount, *[1..10] %>
+      <%= f.hidden_field :item_id, :value => cart_item.item_id %>
+      <%= f.hidden_field :amount, :value => cart_item.amount %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.submit "変更" %>
+      <% end %>
+
       <td><%= cart_item.subtotal %></td>
       <td><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete %></td>
    </tr>
