@@ -3,12 +3,12 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
   # 登録とパスワード変更のルーティングを削除する
-  
+
   # module: URLそのままで、ファイル構成（アクションとコントローラー）のみ指定のパスにしたい
   scope module: :public do
     root to: 'homes#top'
@@ -24,25 +24,25 @@ Rails.application.routes.draw do
       # resource :information, only: [:edit]
     end
     # get 'customers/information/edit' => 'public/customers#edit', as: 'customers_information_edit'
-   
+
     resources :cart_items, except: [:show, :new] do
       collection do
         delete 'destroy_all'
       end
     end
-    
+
     resources :orders do
       collection do
         post 'confirm'
         get 'complete'
       end
     end
-   
-   end
-   
 
-  
-  
+   end
+
+
+
+
   namespace :admin do
     root to: 'homes#top'
     post '/items/new_items_information' => 'items#create', as: 'items_new_items_information'

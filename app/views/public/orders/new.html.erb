@@ -1,6 +1,26 @@
 <h1>orders#new</h1>
 
-<h1>注文情報入力</h1>
-<h2>支払方法</h2>
 
-<h2>お届け先</h2>
+<%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
+  <div>
+    <%= f.label :payment_method, "支払方法" %>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>  <!--ymlファイルで定めたkey1のハッシュ（credit_card）を呼び出す-->
+    <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>  <!--credit_cardをクレジットカードに日本語化する-->
+    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+    <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+    <!--enum導入 で学習した日本語化の記述を反映させる-->
+  </div>
+  <div>
+    <%= f.label :address, "お届け先" %>
+    <%= f.radio_button :address, "ご自身の住所" %>
+    <span><%= current_customer.postal_code %></span><span><%= current_customer.address %></span>
+  </div>
+  <%= f.submit "確認画面へ進む"  %>
+
+<%end%>
+
+
+
+
+
+<!--form_withのモデルクラスのインスタンス：保存したいテーブルのクラスのインスタンス-->
