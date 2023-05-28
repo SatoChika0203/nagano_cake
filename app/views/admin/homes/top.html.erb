@@ -1,1 +1,20 @@
 <h1>admin/homes#top</h1>
+
+<h1>注文履歴</h1><table>
+    <thead>
+        <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @order_details.each do |f| %>
+        <tr>
+            <td><%= f.created_at %></td>
+            <td><%= f.order.name %></td>
+            <td><%= f.amount %></td>
+        </tr>
+     <%end%>
+    </tbody>
+

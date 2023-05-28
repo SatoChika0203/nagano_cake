@@ -5,7 +5,8 @@ def new
 end
 
 def confirm
-  @payment_method=params[:order][:payment_method]
+  @cart_items=CartItem.all
+  @payment_method=Order.payment_methods_i18n[:payment_method]
   @address=params[:order][:address]
   render :confirm
   # redirect_to:もう一度ルーティングからやり直して画面表示・・変数の値も消えてしまう
