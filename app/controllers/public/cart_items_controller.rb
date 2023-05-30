@@ -8,11 +8,8 @@ class Public::CartItemsController < ApplicationController
     @cart_item=CartItem.find(params[:id])
     cart_item=CartItem.find_by(item_id: params[:cart_item][:item_id])
     if cart_item.present?
-      cart_item.amount += params[:cart_item][:amount].to_i
-      cart_item.save
-      redirect_to cart_items_path
-    elsif @cart_item.save
-      @cart_item=CartItem.all
+      @cart_item.amount = params[:cart_item][:amount].to_i
+      @cart_item.save
       redirect_to cart_items_path
     else
       render 'public/items/show'
