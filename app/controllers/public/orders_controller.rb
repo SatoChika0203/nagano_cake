@@ -10,7 +10,7 @@ def confirm
   @payment_method=@order.payment_method_i18n
 
   @order.postage=800  #送料
-  @totaL_price=0     #カート内合計金額（each文で、０に足していく）
+  @total_amount=0     #カート内合計金額（each文で、０に足していく）
 
   render :confirm
   # redirect_to:もう一度ルーティングからやり直して画面表示・・変数の値も消えてしまう
@@ -18,15 +18,22 @@ def confirm
 end
 
 def create
+  @order=Order.new   #order_paramsの値が入ったインスタンスを生成する
+  @payment_method=@order.payment_method_i18n
   @address=current_customer.address
-  @payment_method=params[:payment_method]
+  
+  @order.postage=800
+  @total_amount=params[:total_amount].to_i
+  @billing_amount=@order.postage+@total_amount
 
-  @orders=Order.all
 
   @cart_item=CartItem.find_by(item_id: params[:item_id])
   OrderDetail.save(@cart_item)
 
   redirect_to complete_orders_path
+end
+
+def complete
 end
 
 

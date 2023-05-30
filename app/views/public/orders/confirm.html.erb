@@ -18,7 +18,7 @@
             <td><%= cart_item.item.with_tax_price %></td>
             <td><%= cart_item.amount %></td>
             <td><%= cart_item.subtotal %></td>
-                <% @totaL_price += cart_item.subtotal %>
+                <% @total_amount += cart_item.subtotal %>
         </tr>
      <%end%>
     </tbody>
@@ -35,8 +35,8 @@
     <tbody>
         <tr>
             <td><%= @order.postage %></td>
-            <td><%= @totaL_price %></td>
-            <td><%= @order.postage+@totaL_price %></td>
+            <td><%= @total_amount %></td>
+            <td><%= @order.postage+@total_amount %></td>
         </tr>
     </tbody>
 </table>
@@ -48,3 +48,7 @@
 <span>〒<%= current_customer.postal_code %></span><span><%= current_customer.address %></span>
 
 <%= button_to '注文を確定する', {controller: 'orders', action: 'create'}, {method: :post }%>
+
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+<%= hidden_field :totaL_price, :value => @total_amount %>
+<%end%>
