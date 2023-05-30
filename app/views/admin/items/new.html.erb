@@ -1,17 +1,23 @@
 <h1>admin/items#new</h1>
 
-<h1>商品登録</h1>
+<h1>商品新規登録</h1>
 
 <%= form_with model: @item, url:admin_items_new_items_information_path, method: :post do |f| %>
+<%= f.label :image, "商品画像" %>
 <%= f.file_field :image, accept: "image/*" %>
  <!--accept:"image/*" ...画像ファイルしか投稿できないようにする-->
-<p>商品名</p>
+<%= f.label :name, "商品名" %>
 <%= f.text_field :name %>
-<p>商品説明文</p>
+<%= f.label :introduction, "商品説明" %>
 <%= f.text_area :introduction %>
-<p>価格（税抜き）</p>
-<%= f.text_field :price %>
-<p>販売ステータス</p>
-<%= f.text_field :is_sales %>
- <%= f.submit '登録' %>
+<%= f.label :price, "税抜き価格" %>
+<%= f.text_field :price %>円
+<%= f.label :is_sales, "販売ステータス" %>
+<%= f.radio_button :is_sales, Item.is_sales.key(0) %>
+<%= f.label :is_sales_true, Item.is_sales_i18n[:true] %>
+<%= f.radio_button :is_sales, Item.is_sales.key(1) %>
+<%= f.label :is_sales_false, Item.is_sales_i18n[:false] %>
+
+
+ <%= f.submit '新規登録' %>
 <%end%>

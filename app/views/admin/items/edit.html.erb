@@ -3,16 +3,16 @@
 <h1><%= @item.name %>の編集画面</h1>
 
 <%= form_with model: @item, url:admin_item_path(@item.id), method: :patch do |f| %>
- <p>image</p>
+ <%= f.label :image, "商品画像" %>
  <%= f.file_field :image, placeholder: "商品画像", accept: "image/*" %>
- <p>name</p>
+ <%= f.label :name, "商品名" %>
  <%= f.text_field :name %>
- <p>introduction</p>
+ <%= f.label :introduction, "商品説明" %>
  <%= f.text_area :introduction %>
- <p>price</p>
- <%= f.text_field :price %>
- <p>is_sales</p>
+ <%= f.label :price, "税抜き価格" %>
+ <%= f.text_field :price %>円
+ <%= f.label :is_sales, "販売ステータス" %>
  <%= f.text_field :is_sales %>
  
-   <%= f.submit 'Update Item' %>
+   <%= f.submit '変更を保存する' %>
 <% end %>

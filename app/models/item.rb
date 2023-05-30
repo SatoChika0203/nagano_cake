@@ -9,5 +9,7 @@ class Item < ApplicationRecord
   end
   # floor:端数切り捨
   
+  enum is_sales: { true: 0, false: 1 }
+  
   
 end

@@ -4,7 +4,6 @@
 
 <div>
  <% @items.each do |item| %>
- <% if item.is_sales == true %>
  <div>
   <span>
   <% if item.image.attached? %>
@@ -13,15 +12,12 @@
    <%= image_tag 'default-image', size: "100x100" %>
   <%end%>
   </span>
-  <span><%= item.name %></span>
+  <span> <%= link_to item.name, admin_item_path(item.id) %></span>
  </div>
  <div>
  <%= item.introduction %>
  <%= item.price %>
  <%= item.is_sales %>
- <%= link_to 'Show', admin_item_path(item.id) %>
- <%= link_to 'Edit', edit_admin_item_path(item.id) %>
  </div>
-<% end %>
 <% end %>
 </div>
