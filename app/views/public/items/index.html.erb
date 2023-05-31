@@ -1,23 +1,26 @@
 <h1>items#index</h1>
 
 <div>
- <% @items.each do |item| %>
- <% if item.is_sales == true %>
- <div>
-  <span>
-  <% if item.image.attached? %>
-   <%= image_tag item.image, size: "100x100" %>
-  <% else %>
-   <%= image_tag 'default-image', size: "100x100" %>
-  <%end%>
-  </span>
-  <span><%= item.name %></span>
- </div>
- <div>
- <%= item.introduction %>
- <%= item.price %>
- <%= link_to 'Show', item_path(item.id) %>
- </div>
-<% end %>
-<% end %>
+  <% @items.each do |item| %>
+   <div>
+     <span>
+      <% if item.image.attached? %>
+      <%= image_tag item.image, size: "100x100" %>
+      <% else %>
+      <%= image_tag 'default-image', size: "100x100" %>
+      <%end%>
+    </span>
+    <span><%= item.name %></span>
+   </div>
+   <div>
+    <%= item.introduction %>
+    <%= item.price %>
+    <% if item.is_sales == "sale" %>
+      販売中
+    <% else %>
+      売り切れ
+    <% end %>
+   <%= link_to 'Show', item_path(item.id) %>
+   </div>
+ <% end %>
 </div>

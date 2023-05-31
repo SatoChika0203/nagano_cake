@@ -1,6 +1,7 @@
 class Public::ItemsController < ApplicationController
   def index
     @items=Item.all
+    @is_sales=params[:is_sales]
   end
   
   def show
