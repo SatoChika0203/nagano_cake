@@ -8,8 +8,8 @@ class Item < ApplicationRecord
     (price * 1.1).floor  #消費税を求めるメソッド
   end
   # floor:端数切り捨
-  
-  enum is_sales: { true: 0, false: 1 }
+
+  enum is_sales: { sale: true, notsale: false }
   
   
 end

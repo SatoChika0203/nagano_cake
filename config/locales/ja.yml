@@ -6,8 +6,8 @@ ja:
           transfer: "銀行振込"
       item:
         is_sales:
-          true: "販売中"
-          false: "販売停止中"
+          sale: "販売中"
+          notsale: "販売停止中"
 
 
 # enumで値に紐付けたキーを、日本語化する

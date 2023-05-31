@@ -13,11 +13,9 @@
 <%= f.label :price, "税抜き価格" %>
 <%= f.text_field :price %>円
 <%= f.label :is_sales, "販売ステータス" %>
-<%= f.radio_button :is_sales, Item.is_sales.key(0) %>
-<%= f.label :is_sales_true, Item.is_sales_i18n[:true] %>
-<%= f.radio_button :is_sales, Item.is_sales.key(1) %>
-<%= f.label :is_sales_false, Item.is_sales_i18n[:false] %>
-
-
+<%= f.radio_button :is_sales, Item.is_sales.key(true) %>
+<%= f.label :is_sales_sale, Item.is_sales_i18n[:sale] %>
+<%= f.radio_button :is_sales, Item.is_sales.key(false) %>
+<%= f.label :is_sales_notsale, Item.is_sales_i18n[:notsale] %>
  <%= f.submit '新規登録' %>
 <%end%>
