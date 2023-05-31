@@ -14,6 +14,7 @@
     <%= f.label :address, "お届け先" %>
     <%= f.radio_button :address, "ご自身の住所" %>
     <span><%= current_customer.postal_code %></span><span><%= current_customer.address %></span>
+    <span><%= current_customer.last_name %></span><span><%= current_customer.first_name %></span>
   </div>
   <%= f.submit "確認画面へ進む"  %>
 

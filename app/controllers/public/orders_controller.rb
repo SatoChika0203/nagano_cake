@@ -7,8 +7,11 @@ end
 def confirm
   @cart_items=CartItem.all
   @order=Order.new(order_params)   #order_paramsの値が入ったインスタンスを生成する
-  @payment_method=@order.payment_method_i18n
-
+  
+  # @order.postal_code = current_customer.postal_code
+  # @order.address = current_customer.address
+  # @order.name = current_customer.first_name + current_customer.last_name
+  
   @order.postage=800  #送料
   @total_amount=0     #カート内合計金額（each文で、０に足していく）
 
@@ -18,13 +21,8 @@ def confirm
 end
 
 def create
-  @order=Order.new   #order_paramsの値が入ったインスタンスを生成する
-  @payment_method=@order.payment_method_i18n
-  @address=current_customer.address
-  
-  @order.postage=800
-  @total_amount=params[:total_amount].to_i
-  @billing_amount=@order.postage+@total_amount
+  @order=Order.new(order_params)   #order_paramsの値が入ったインスタンスを生成する
+
 
 
   @cart_item=CartItem.find_by(item_id: params[:item_id])
@@ -39,7 +37,7 @@ end
 
 private
   def order_params
-     params.require(:order).permit(:payment_method)
+     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :amount_money, :postage)
   end
   #order_paramsの各カラムの情報が入ったインスタンスを、新しく生成
 end
