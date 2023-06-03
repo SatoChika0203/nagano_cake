@@ -7,7 +7,8 @@ end
 def confirm
   @cart_items=CartItem.all
   @order=Order.new(order_params)   #order_paramsの値が入ったインスタンスを生成する
-  @order_detail=OrderDetail.new(order_detail_params)
+  # @order_detail=OrderDetail.new(order_detail_params)
+  
   # @order.postal_code = current_customer.postal_code
   # @order.address = current_customer.address
   # @order.name = current_customer.first_name + current_customer.last_name
@@ -22,11 +23,18 @@ end
 
 def create
   @order=Order.new(order_params)   #order_paramsの値が入ったインスタンスを生成する
-  @order_detail=OrderDetail.new(order_detail_params)
-
+  # @order_detail=OrderDetail.new(order_detail_params)
   @order.save
-  @order_detail.save
-  @order_detail.destroy
+  
+  cart_items=CartItem.all
+  order_detail=OrderDetail.new
+  order_detail.order_id=@order.id
+  order_detail.item_id=cart_items.item_id
+  order_detail.unit_price=cart_items.item.with_tax_price
+  order_detail.amount=cart_items.amount
+  
+  order_detail.save
+  order_detail.destroy_all
   redirect_to complete_orders_path
 end
 
@@ -36,13 +44,10 @@ end
 
 private
   def order_params
-     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :amount_money, :postage)
+     params.require(:order).permit(:payment_method, :postal_code, :address, :address_name, :amount_money, :postage)
   end
   #order_paramsの各カラムの情報が入ったインスタンスを、新しく生成
   
-  def order_detail_params
-    params.require(:order_detail).permit(:order_id, :item_id, :amount, :unit_price)
-  end
 end
 
 

@@ -3,7 +3,7 @@
 
 <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
   <div>
-    <%= f.label :payment_method, "支払方法" %>
+    <p>支払方法</p>
     <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>  <!--ymlファイルで定めたkey1のハッシュ（credit_card）を呼び出す-->
     <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>  <!--credit_cardをクレジットカードに日本語化する-->
     <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
@@ -11,11 +11,15 @@
     <!--enum導入 で学習した日本語化の記述を反映させる-->
   </div>
   <div>
-    <%= f.label :address, "お届け先" %>
-    <%= f.radio_button :address, "ご自身の住所" %>
+    <p>お届け先</p>
+    <%= f.radio_button :address, current_customer.postal_code + current_customer.address %>
+    <%= f.label :address, "ご自身の住所" %>
     <span><%= current_customer.postal_code %></span><span><%= current_customer.address %></span>
     <span><%= current_customer.last_name %></span><span><%= current_customer.first_name %></span>
   </div>
+  
+  <%= f.hidden_field :order_id, :value => @order.id %>
+
   <%= f.submit "確認画面へ進む"  %>
 
 <%end%>

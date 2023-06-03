@@ -21,6 +21,8 @@
                 <% @order.amount_money += cart_item.subtotal %>
         </tr>
      <%end%>
+
+
     </tbody>
 </table>
 
@@ -48,17 +50,13 @@
 <span>〒<%= current_customer.postal_code %></span><span><%= current_customer.address %></span>
 <span><%= current_customer.last_name %></span><span><%= current_customer.first_name %></span>
 
-<%= form_with model: [@order, @order_detail], url: orders_path, method: :post do |f| %>
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
 <%= f.hidden_field :amount_money, :value => @order.amount_money %>
 <%= f.hidden_field :payment_method, :value => @order.payment_method %>
 <%= f.hidden_field :postage, :value => @order.postage %>
 <%= f.hidden_field :postal_code, :value => current_customer.postal_code %>
 <%= f.hidden_field :address, :value => current_customer.address %>
-<%= f.hidden_field :name, :value => current_customer.last_name + current_customer.first_name %>
+<%= f.hidden_field :address_name, :value => current_customer.last_name + current_customer.first_name %>
 
-<%= hidden_field :order_id, :value => @order.id %>
-<%= hidden_field :item_id, :value => @cart_items.item.id %>
-<%= hidden_field :amount, :value => @cart_items.amount %>
-<%= hidden_field :unit_price, :value => @cart_item.item.with_tax_price %>
 <%= f.submit "注文を確定する" %>
 <%end%>
