@@ -1,24 +1,25 @@
 <h1>public/customer#edit</h1>
 
 <div>
-<%= form_with model: @customer, url:customers_path, method: :patch do |f| %>
-<p>Last_name</p>
-<%= f.text_field :last_name %>
-<p>First_name</p>
-<%= f.text_field :first_name %>
-<p>Last_name_kana</p>
-<%= f.text_field :last_name_kana %>
-<p>First_name_kana</p>
-<%= f.text_field :first_name_kana %>
-<p>Email</p>
-<%= f.text_field :email %>
-<p>Postal_code</p>
-<%= f.text_field :postal_code %>
-<p>Address</p>
-<%= f.text_area :address %>
-<p>Telephone_number</p>
-<%= f.text_field :telephone_number %>
+  <h2>会員情報編集</h2>
+    <%= form_with model: @customer, url:customers_path, method: :patch do |f| %>
+      <p>氏名</p>
+      <%= f.text_field :last_name %>
+      <%= f.text_field :first_name %>
+      <p>フリガナ</p>
+      <%= f.text_field :last_name_kana %>
+      <%= f.text_field :first_name_kana %>
+      <p>郵便番号</p>
+      <%= f.text_field :postal_code %>
+      <p>住所</p>
+      <%= f.text_area :address %>
+      <p>電話番号</p>
+      <%= f.text_field :telephone_number %>
+      <p>メールアドレス</p>
+      <%= f.text_field :email %>
+      
+      <p><%= f.submit "編集内容を保存する" %></p>
+    <%end%>
 
-<p><%= f.submit "Update Customer" %></p>
-<%end%>
+  <p><%= link_to "退会する", confirm_customers_path, method: :get %></p>
 </div>

@@ -1,4 +1,10 @@
 <h1>退会画面</h1>
 
-<%= link_to 'Yes', withdraw_customers_path, method: :patch %>
-<%= link_to 'No', customers_path, method: :get  %>
+<p>本当に退会しますか?</p>
+
+<p>本当に退会しますか退会すると、会員登録情報や</p>
+<p>本当に退会しますかこれまでの購入履歴が閲覧できなくなります。</p>
+<p>本当に退会しますか退会する場合は、「退会する」をクリックしてください。</p>
+
+<%= link_to '退会しない', customers_path, method: :get  %>
+<%= link_to '退会する', withdraw_customers_path, method: :patch %>

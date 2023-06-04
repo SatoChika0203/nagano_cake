@@ -1,0 +1,27 @@
+<h1>注文履歴一覧</h1>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>注文日</th>
+        <th>配送先</th>
+        <th>注文商品</th>
+        <th>支払金額</th>
+        <th>注文詳細</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+     <% @orders.each do |f| %>
+      <tr>
+        <td><%= f.created_at %></td>
+        <td><%= f.postal_code %><%= f.address %><%= f.address_name %></td>
+        <td><% @order_details.each do |t| %><%= t.item.name %><%end%></td>
+        <td><%= (f.amount_money.to_i)+(f.postage.to_i) %></td>
+        <td><%= link_to '注文詳細', order_path(f.id), method: :get %></td>
+      </tr>
+     <%end%>
+    </tbody>
+  </table>
+</div>

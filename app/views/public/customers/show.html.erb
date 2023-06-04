@@ -1,13 +1,37 @@
 <h1>customers#show</h1>
 
-<h2>name</h2>
-<span><%= @customer.last_name %></span><span><%= @customer.first_name %></span>
 
-<h2>email</h2>
-<%= @customer.email %>
 
 <div>
-  <th><%= link_to "Edit", customers_information_edit_path, method: :get %></th>
-  <th><%= link_to "Confirm", confirm_customers_path, method: :get %></th>
+  <h2>登録情報</h2>
+  <%= link_to "編集する", customers_information_edit_path, method: :get %>
+    <table>
+     <thead>
+       <tr>
+          <th>氏名</th>
+          <th>カナ</th>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>電話番号</th>
+          <th>メールアドレス</th>
+       </tr>
+     </thead>
+    
+     <tbody>
+       <tr>
+          <td><span><%= @customer.last_name %></span><span><%= @customer.first_name %></span></td>
+          <td><span><%= @customer.last_name_kana %></span><span><%= @customer.first_name_kana %></span></td>  <!--税込み単価（消費税の10%を加算）-->
+          <td><%= @customer.postal_code %></td>
+          <td><%= @customer.address %></td>
+          <td><%= @customer.telephone_number %></td>
+          <td><%= @customer.email %></td>
+       </tr>
+     </tbody>
+    </table>
+ </div>
+
+<div>
+  <h2>注文履歴</h2>
+  <%= link_to "一覧を見る", orders_path, method: :get %>
 </div>
 
