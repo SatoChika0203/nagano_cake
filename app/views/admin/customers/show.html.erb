@@ -1,20 +1,39 @@
 <h1>adimin/customer#show</h1>
 
-<h1>会員の詳細画面</h1>
+<h2><%= @customer.last_name+@customer.first_name %>さんの会員詳細</h2>
 
-<p>id</p>
-<span><%= @customer.id %></span>
-<p>name</p>
-<span><%= @customer.last_name %></span><span><%= @customer.first_name %></span>
-<span><%= @customer.last_name_kana %></span><span><%= @customer.first_name_kana %></span>
-<p>email</p>
-<%= @customer.email %>
-<p>adress</p>
-<%= @customer.postal_code %>
-<%= @customer.address %>
-<p>telephone_number</p>
-<%= @customer.telephone_number %>
-<p>is_deleted</p>
-<%= @customer.is_deleted %>
+<div>
+    <table>
+     <thead>
+       <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>フリカナ</th>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>電話番号</th>
+          <th>メールアドレス</th>
+          <th>会員ステータス</th>
+       </tr>
+     </thead>
 
-<%= link_to "Edit", edit_admin_customer_path(@customer.id) %>
+     <tbody>
+       <tr>
+          <td><%= @customer.id %></td>
+          <td><%= @customer.last_name + @customer.first_name %></td>
+          <td><%= @customer.last_name_kana + @customer.first_name_kana %></td>  <!--税込み単価（消費税の10%を加算）-->
+          <td><%= @customer.postal_code %></td>
+          <td><%= @customer.address %></td>
+          <td><%= @customer.telephone_number %></td>
+          <td><%= @customer.email %></td>
+          <% if @customer.is_deleted == "true" %>
+            <td>退会中</td>
+          <% else %>
+            <td>有効</td>
+          <% end %>
+       </tr>
+     </tbody>
+    </table>
+ </div>
+
+<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>

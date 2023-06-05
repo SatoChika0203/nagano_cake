@@ -11,7 +11,7 @@
     <tbody>
       <% @order_details.each do |f| %>
         <tr>
-            <td><%= link_to f.created_at, admin_order_path(f.id), method: :show %></td>
+            <td><%= link_to f.created_at, admin_order_path(f.order.id), method: :get %></td>
             <td><%= f.item.name %></td>
             <td><%= f.amount %></td>
         </tr>

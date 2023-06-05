@@ -2,25 +2,26 @@
 
 <h1>会員の編集画面</h1>
 
+<p>会員ID</p>
+ <%= @customer.id %>
 <%= form_with model: @customer, url:admin_customer_path(@customer.id), method: :patch do |f| %>
-<p>last_name</p>
- <%= f.text_field :last_name %>
-<p>first_name</p>
- <%= f.text_field :first_name %>
-<p>last_name_kana</p>
- <%= f.text_field :last_name_kana %>
-<p>first_name_kana</p>
- <%= f.text_field :first_name_kana %>
- <p>email</p>
- <%= f.text_field :email %>
-<p>postal_code</p>
+<p>氏名</p>
+ <%= f.text_field :last_name %><%= f.text_field :first_name %>
+<p>フリガナ</p>
+ <%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>
+ <p>郵便番号</p>
  <%= f.text_field :postal_code %>
-<p>address</p>
+ <p>住所</p>
  <%= f.text_area :address %>
-<p>telephone_number</p>
+ <p>電話番号</p>
  <%= f.text_field :telephone_number %>
-<p>is_deleted</p>
- <%= f.text_field :is_deleted %>
+ <p>メールアドレス</p>
+ <%= f.text_field :email %>
+<p>会員ステータス</p>
+ <%= f.radio_button :is_deleted, Customer.is_deleted.key(false) %>
+ <%= f.label :is_deleted_false, Customer.is_deleted_i18n[:customer] %>  
+ <%= f.radio_button :is_deleted, Customer.is_deleted.key(true) %>
+ <%= f.label :is_deleted_true, Customer.is_deleted_i18n[:delete] %>  
  
-   <%= f.submit 'Update Customer' %>
+ <%= f.submit '変更を保存' %>
 <% end %>

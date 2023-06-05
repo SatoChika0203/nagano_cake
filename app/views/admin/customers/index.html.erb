@@ -2,15 +2,31 @@
 
 <h1>会員一覧画面</h1>
 
-<% @customers.each do |customer| %>
-<p>id</p>
-<span><%= customer.id %></span>
-<p>name</p>
-<span><%= customer.last_name %></span><span><%= customer.first_name %></span>
-<span><%= customer.last_name_kana %></span><span><%= customer.first_name_kana %></span>
-<p><%= customer.email %></p>
-<p>is_deleted</p>
-<%= customer.is_deleted %>
+<div>
+   <table>
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
 
-<%= link_to "Show", admin_customer_path(customer.id) %>
-<% end %>
+      <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id), method: :get %></td>
+          <td><%= customer.email %></td>
+          <% if customer.is_deleted == "true" %>
+            <td>退会中</td>
+          <% else %>
+            <td>有効</td>
+          <% end %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+</div>
+
