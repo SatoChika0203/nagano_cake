@@ -26,7 +26,7 @@
           <td><%= @customer.address %></td>
           <td><%= @customer.telephone_number %></td>
           <td><%= @customer.email %></td>
-          <% if @customer.is_deleted == "true" %>
+          <% if @customer.is_deleted == true %>
             <td>退会中</td>
           <% else %>
             <td>有効</td>

@@ -1,4 +1,6 @@
-<h2>Log in</h2>
+<h2>ログイン</h2>
+
+<p>会員の方はこちらからログイン</p>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -23,4 +25,8 @@
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+<p>会員登録がお済みでない方</p>
+
+<%= link_to 'こちら', new_customer_registration_path %>から新規登録を行ってください。
+
+<!--<%= render "public/shared/links" %>-->

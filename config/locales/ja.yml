@@ -189,10 +189,10 @@ ja:
       is_sales:
         sale: "販売中"
         notsale: "販売停止中"
-    customer:
-      is_deleted:
-        customer: "有効"
-        delete: "退会"
+    # customer:
+    #   is_deleted:
+    #     customer: "有効"
+    #     delete: "退会"
         
 
 

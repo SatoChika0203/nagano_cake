@@ -7,5 +7,5 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
   
-  enum is_deleted: { delete: true, customer: false }
+  # enum is_deleted: { delete: true, customer: false }
 end

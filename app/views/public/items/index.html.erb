@@ -20,7 +20,10 @@
     <% else %>
       売り切れ
     <% end %>
-   <%= link_to 'Show', item_path(item.id) %>
+    
+    <% if customer_signed_in? %>
+    <%= link_to 'Show', item_path(item.id) %>
+    <% end %>
    </div>
  <% end %>
 </div>

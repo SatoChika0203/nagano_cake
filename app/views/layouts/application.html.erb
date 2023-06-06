@@ -25,7 +25,26 @@
       <li>
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>     
       </li>
-    <% else %>
+    <% elsif admin_signed_in? %>
+      <li>
+        <%= link_to "商品一覧", admin_items_path %>
+      </li>
+      <li>
+        <%= link_to "顧客一覧", admin_customers_path %>
+      </li>
+      <li>
+        <%= link_to "注文履歴一覧", admin_root_path %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>     
+      </li>
+    <% else  %>
+    　<li>
+        <%= link_to "About", about_path %>
+      </li>
+      <li>
+        <%= link_to "商品一覧", items_path %>
+      </li>
       <li>
         <%= link_to "新規登録", new_customer_registration_path %>
       </li>
@@ -34,17 +53,6 @@
       </li>
     <% end %>
     
-    <% if admin_signed_in? %>
-      <li>
-        <%= link_to "商品一覧", admin_items_path %>
-      </li>
-      <li>
-        <%= link_to "顧客一覧", admin_customers_path %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>     
-      </li>
-    <% end %>
   </header>
     
     <%= yield %>
