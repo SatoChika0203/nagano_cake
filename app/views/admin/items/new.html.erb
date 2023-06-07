@@ -17,5 +17,5 @@
 <%= f.label :is_sales_sale, Item.is_sales_i18n[:sale] %>
 <%= f.radio_button :is_sales, Item.is_sales.key(false) %>
 <%= f.label :is_sales_notsale, Item.is_sales_i18n[:notsale] %>
- <%= f.submit '新規登録' %>
+<button class="btn btn-success" type="submit">新規登録</button>
 <%end%>

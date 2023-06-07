@@ -58,5 +58,6 @@
 <%= f.hidden_field :address, :value => current_customer.address %>
 <%= f.hidden_field :address_name, :value => current_customer.last_name + current_customer.first_name %>
 
-<%= f.submit "注文を確定する" %>
+<button class="btn btn-success" type="submit">注文を確定する</button>
+
 <%end%>

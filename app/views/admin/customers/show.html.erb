@@ -36,4 +36,8 @@
     </table>
  </div>
 
-<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
+  <div>
+    <p><%= link_to "編集する", edit_admin_customer_path(@customer.id),  class: "btn btn-success btn-sm" %></p>
+    
+    <p><%= link_to "注文履歴一覧を見る", admin_root_path, class: "btn btn-primary btn-sm" %></p>
+  </div>

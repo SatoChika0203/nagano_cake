@@ -19,7 +19,7 @@
         <td><%= f.postal_code %><%= f.address %><%= f.address_name %></td>
         <td><% @order_details.each do |t| %><%= t.item.name %><%end%></td>
         <td><%= (f.amount_money.to_i)+(f.postage.to_i) %></td>
-        <td><%= link_to '注文詳細', order_path(f.id), method: :get %></td>
+        <td><%= link_to '表示する', order_path(f.id), method: :get, class: "btn btn-primary btn-sm" %></td>
       </tr>
      <%end%>
     </tbody>

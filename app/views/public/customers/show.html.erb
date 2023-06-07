@@ -2,7 +2,7 @@
 
 <div>
   <h2>登録情報</h2>
-  <%= link_to "編集する", customers_information_edit_path, method: :get %>
+  <%= link_to "編集する", customers_information_edit_path, method: :get, class: "btn btn-success btn-sm" %>
     <table>
      <thead>
        <tr>
@@ -30,6 +30,6 @@
 
 <div>
   <h2>注文履歴</h2>
-  <%= link_to "一覧を見る", orders_path, method: :get %>
+  <%= link_to "一覧を見る", orders_path, method: :get, class: "btn btn-primary" %>
 </div>
 

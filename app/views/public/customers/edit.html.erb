@@ -1,5 +1,14 @@
 <h1>public/customer#edit</h1>
 
+<!--<% if @customer.errors.any? %>-->
+<!--  <%= @customer.errors.count %>件のエラーが発生しました-->
+<!--  <ul>-->
+<!--    <% @customer.errors.full_messages.each do |message| %>-->
+<!--      <li><%= message %></li>-->
+<!--    <% end %>-->
+<!--  </ul>-->
+<!--<% end %>-->
+
 <div>
   <h2>会員情報編集</h2>
     <%= form_with model: @customer, url:customers_path, method: :patch do |f| %>
@@ -17,9 +26,9 @@
       <%= f.text_field :telephone_number %>
       <p>メールアドレス</p>
       <%= f.text_field :email %>
-      
-      <p><%= f.submit "編集内容を保存する" %></p>
+
+      <p><button class="btn btn-success btn-sm" type="submit">編集内容を保存する</button></p>
     <%end%>
 
-  <p><%= link_to "退会する", confirm_customers_path, method: :get %></p>
+  <p><%= link_to "退会する", confirm_customers_path, method: :get, class: "btn btn-danger btn-sm" %></p>
 </div>
