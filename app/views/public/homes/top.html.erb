@@ -1,13 +1,22 @@
-<p>ようこそ、ながのCAKEへ!</p>
-<p>ようこそこのサイトは、ケーキ販売のECサイトになります。</p>
-<p>ようこそ会員でない方も商品の閲覧はできますが、</p>
-<p>ようこそ購入には会員登録が必要になります。</p>
+<div class="container-md">
+  <div class="col-md-8  p-5">
+    <p>ようこそ、ながのCAKEへ!</p>
+    <p>このサイトは、ケーキ販売のECサイトになります。</p>
+    <p>会員でない方も商品の閲覧はできますが、</p>
+    <p>購入には会員登録が必要になります。</p>
+  </div>
+</div>
 
-<p>新着商品</p>
-<% @items.each do |f| %>
-<%= image_tag f.image, size: "100x100" %>
-<%= f.name %>
-<%= f.price %>
-<%end%>
-
-<%= link_to '全ての商品を見る', items_path, method: :get %>
+<div class="container-md p-5">
+  <h2>新着商品</h2>
+    <div class="d-flex justify-content-around">
+      <% @items.each do |f| %>
+       <div class="d-flex flex-column">
+         <p><%= image_tag f.image, size: "150x100" %></p>
+         </p><%= f.name %></p>
+         </p><%= f.price %>円</p>
+       </div>
+      <%end%>
+    </div>
+  <p class="text-right"><%= link_to '全ての商品を見る', items_path, method: :get %></p>
+</div>

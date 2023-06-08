@@ -1,29 +1,32 @@
-<h1>items#index</h1>
-
-<div>
-  <% @items.each do |item| %>
-   <div>
-     <span>
+<div class="container-md p-5">
+  <h2>商品一覧</h2><span>全<%= @items.count%>件</span>
+   <div class="d-flex flex-wrap">
+  　<% @items.each do |item| %>
+  　<div class="d-flex flex-column col-md-2">
       <% if item.image.attached? %>
-      <%= image_tag item.image, size: "100x100" %>
+        <p><%= image_tag item.image, size: "150x100" %></p>
       <% else %>
-      <%= image_tag 'default-image', size: "100x100" %>
+        <p><%= image_tag 'default-image', size: "100x100" %></p>
       <%end%>
-    </span>
-    <span><%= item.name %></span>
-   </div>
-   <div>
-    <%= item.introduction %>
-    <%= item.price %>
-    <% if item.is_sales == "sale" %>
-      販売中
-    <% else %>
-      売り切れ
-    <% end %>
-    
-    <% if customer_signed_in? %>
-    <%= link_to 'Show', item_path(item.id) %>
-    <% end %>
-   </div>
- <% end %>
+      
+      <% if customer_signed_in? %>
+        <p><%= link_to item.name, item_path(item.id) %></p>
+      <% else %>
+        <p><%= item.name %></p>
+      <% end %>
+      
+        <p><%= item.price %>円</p>
+        
+      <% if item.is_sales == "sale" %>
+        </p>販売中</p>
+      <% else %>
+        </p>売り切れ</p>
+      <% end %>
+      
+      <!--<% if customer_signed_in? %>-->
+      <!--  <%= link_to 'Show', item_path(item.id) %>-->
+      <!--<% end %>-->
+      </div>
+　  <% end %>
+ </div>
 </div>
