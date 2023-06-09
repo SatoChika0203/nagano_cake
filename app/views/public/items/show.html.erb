@@ -1,29 +1,26 @@
-<h1>items#show</h1>
-
-<h1><%= @item.name %>の詳細画面</h1>
-
-<p><%= image_tag @item.image, size:"300×300" %></p>
-
-<h2>商品名</h2>
-<p><%= @item.name %></p>
-
-<h2>商品説明文</h2>
-<p><%= @item.introduction %></p>
-
-<h2>価格</h2>
-<p><%= @item.price %></p>
-
-<% if @item.is_sales == "sale" %>
-<%= form_with model: @cart_item, url:cart_items_path, method: :post do |f| %>
-<%= f.label :amount, "個数選択" %>
-<%= f.select :amount, *[1..10] %>
-<%= f.hidden_field :item_id, :value => @item.id %>
-<%= f.hidden_field :customer_id, :value => current_customer.id %>
-<!--所持している値を次のアクション（cart_items_path）に渡す-->
-<!--「キー（item_id）」と「値（@item.id）」-->
-
-<button class="btn btn-success" type="submit">カートに入れる</button>
-<%end%>
-
-<% end %>
-
+<div>
+<div class="container-md p-5">
+    <div class="d-flex flex-row">
+      <div class="col-md-6">
+       <p><%= image_tag @item.image, size: "400x300" %></p>
+        </div>
+        
+        <div class="col-md-6">
+          <p class="h2"><strong><%= @item.name %></strong></p>
+          <p class="p-3"><%= @item.introduction %></p>
+          <p class="pl-3">¥<%= @item.price %>(税込)</p>
+              
+          <% if @item.is_sales == "sale" %>
+            <%= form_with model: @cart_item, url:cart_items_path, method: :post do |f| %>
+            <p class="p-3"><span><%= f.label :amount, "個数選択" %></span><span class="pl-2"><%= f.select :amount, *[1..10] %></span></p>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                <!--所持している値を次のアクション（cart_items_path）に渡す-->
+                <!--「キー（item_id）」と「値（@item.id）」-->
+            <p class="pl-3"><button class="btn btn-success mt-3" type="submit">カートに入れる</button></p>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+</div>
+</div>

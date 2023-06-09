@@ -1,8 +1,8 @@
 <div class="container-md p-5">
   <h2>商品一覧</h2><span>全<%= @items.count%>件</span>
    <div class="d-flex flex-wrap">
-  　<% @items.each do |item| %>
-  　<div class="d-flex flex-column col-md-2">
+  　<% @items.each do |item|2%>
+  　<div class="d-flex flex-column col-md-3">
       <% if item.image.attached? %>
         <p><%= image_tag item.image, size: "150x100" %></p>
       <% else %>
