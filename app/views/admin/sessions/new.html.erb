@@ -1,3 +1,38 @@
+<div class="container-md p-5">
+  <h3>ログイン</h3>
+  <p class="m-4">会員の方はこちらからログイン</p>
+
+      <div class="ml-5">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+         <div class="field">
+          <div class="form-group row">
+            <label class="col-md-2 control-label" for="email">メールアドレス</label>
+            <p class="col-md-10"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+          </div>
+         </div>
+         
+         <div class="field">
+          <div class="form-group row">
+             <label class="col-md-2 control-label" for="email">パスワード</label> 
+             <p class="col-md-10"><%= f.password_field :password, autocomplete: "current-password" %></p>
+          </div>
+         </div>
+        
+          <% if devise_mapping.rememberable? %>
+          <div class="field">
+             <%= f.check_box :remember_me %>
+             <%= f.label :remember_me %>
+          </div>
+          <% end %>
+          
+          
+          <div class="actions py-3">
+             <button class="btn btn-success" type="submit">ログイン</button>
+          </div>
+        <% end %>
+      </div>
+
+
 <h2>管理者</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

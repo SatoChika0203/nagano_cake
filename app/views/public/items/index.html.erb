@@ -1,8 +1,9 @@
 <div class="container-md p-5">
-  <h2>商品一覧</h2><span>全<%= @items.count%>件</span>
+  <h2>商品一覧</h2
+  ><p>全<%= @items.count%>件</p>
    <div class="d-flex flex-wrap">
-  　<% @items.each do |item|2%>
-  　<div class="d-flex flex-column col-md-3">
+  　<% @items.each do |item| %>
+  　<div class="d-flex flex-column">
       <% if item.image.attached? %>
         <p><%= image_tag item.image, size: "150x100" %></p>
       <% else %>
@@ -22,10 +23,6 @@
       <% else %>
         </p>売り切れ</p>
       <% end %>
-      
-      <!--<% if customer_signed_in? %>-->
-      <!--  <%= link_to 'Show', item_path(item.id) %>-->
-      <!--<% end %>-->
       </div>
 　  <% end %>
  </div>
