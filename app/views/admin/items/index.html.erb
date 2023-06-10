@@ -1,25 +1,28 @@
 <div class="container-md p-5">
-<h2>admin/items#index</h2>
-
-<%= link_to "商品の新規登録", new_admin_item_path %>
-
-<div>
- <% @items.each do |item| %>
- <div>
-  <span>
-  <% if item.image.attached? %>
-   <%= image_tag item.image, size: "100x100" %>
-  <% else %>
-   <%= image_tag 'default-image', size: "100x100" %>
-  <%end%>
-  </span>
-  <span> <%= link_to item.name, admin_item_path(item.id) %></span>
- </div>
- <div>
- <%= item.introduction %>
- <%= item.price %>
- <%= item.is_sales_i18n %>
- </div>
-<% end %>
-</div>
+  <div class="d-flex bd-highlight mb-3">
+    <h2 class="mr-auto bd-highlight">商品一覧</h2>
+    <p class="bd-highlight"><%= link_to "商品の新規登録", new_admin_item_path, class: "btn btn-success btn-sm" %></p>
+  </div>
+  
+  <div>
+    <table class="table table-hover">
+     <thead class="table-secondary">
+       <tr class="text-center">
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜き価格</th>
+          <th>ステータス</th>
+       </tr>
+     </thead>
+     
+     <tbody>
+       <% @items.each do |item| %>
+         <tr class="text-center">
+          　<td class="col-2"><%= item.id %></td>
+          　<td class="col-6"><%= link_to item.name, admin_item_path(item.id) %></td>
+          　<td class="col-2"><%= item.price %></td>
+          　<td class="col-2"><%= item.is_sales_i18n %></td>
+         </tr>
+       <% end %>
+  </div>
 </div>

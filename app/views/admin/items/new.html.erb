@@ -1,21 +1,58 @@
-<h1>admin/items#new</h1>
+<div class="container-md p-5">
+  <h2>商品新規登録</h2>
+    <div class="m-5">
+      <%= form_with model: @item, url:admin_items_new_items_information_path, method: :post do |f| %>
+        <div class="form-group row">
+          <div class="col-md-2">
+            <p>商品画像</p>
+          </div>
+          <div class="col-md-10">
+            <p><%= f.file_field :image, placeholder: "商品画像", accept: "image/*" %></p>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="col-md-2">
+            <p>商品名</p>
+          </div>
+          <div class="col-md-10">
+            <p><%= f.text_field :name %></p>
+          </div>
+        </div>
 
-<h1>商品新規登録</h1>
+        <div class="form-group row">
+          <div class="col-md-2">
+            <p>商品説明</p>
+          </div>
+          <div class="col-md-10">
+            <p><%= f.text_area :introduction %></p>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="col-md-2">
+            <p>税抜き価格</p>
+          </div>
+          <div class="col-md-10">
+            <p><%= f.text_field :price %>　円</p>
+          </div>
+        </div>        
 
-<%= form_with model: @item, url:admin_items_new_items_information_path, method: :post do |f| %>
-<%= f.label :image, "商品画像" %>
-<%= f.file_field :image, accept: "image/*" %>
- <!--accept:"image/*" ...画像ファイルしか投稿できないようにする-->
-<%= f.label :name, "商品名" %>
-<%= f.text_field :name %>
-<%= f.label :introduction, "商品説明" %>
-<%= f.text_area :introduction %>
-<%= f.label :price, "税抜き価格" %>
-<%= f.text_field :price %>円
-<%= f.label :is_sales, "販売ステータス" %>
-<%= f.radio_button :is_sales, Item.is_sales.key(true) %>
-<%= f.label :is_sales_sale, Item.is_sales_i18n[:sale] %>
-<%= f.radio_button :is_sales, Item.is_sales.key(false) %>
-<%= f.label :is_sales_notsale, Item.is_sales_i18n[:notsale] %>
-<button class="btn btn-success" type="submit">新規登録</button>
-<%end%>
+        <div class="form-group row">
+          <div class="col-md-2">
+            <p>販売ステータス</p>
+          </div>
+          <div class="col-md-10">
+            <%= f.radio_button :is_sales, Item.is_sales.key(true) %>
+            <%= f.label :is_sales_sale, Item.is_sales_i18n[:sale] %>
+            <%= f.radio_button :is_sales, Item.is_sales.key(false) %>
+            <%= f.label :is_sales_notsale, Item.is_sales_i18n[:notsale] %>
+          </div>
+        </div>  
+ 
+        <div>
+          <button class="btn btn-success" type="submit">新規登録</button>
+        </div>
+      <% end %>
+    </div>
+</div>
