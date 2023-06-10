@@ -3,7 +3,7 @@
     <h2 class="mr-auto bd-highlight">商品一覧</h2>
     <p class="bd-highlight"><%= link_to "商品の新規登録", new_admin_item_path, class: "btn btn-success btn-sm" %></p>
   </div>
-  
+
   <div>
     <table class="table table-hover">
      <thead class="table-secondary">
@@ -14,7 +14,7 @@
           <th>ステータス</th>
        </tr>
      </thead>
-     
+
      <tbody>
        <% @items.each do |item| %>
          <tr class="text-center">
@@ -24,5 +24,7 @@
           　<td class="col-2"><%= item.is_sales_i18n %></td>
          </tr>
        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

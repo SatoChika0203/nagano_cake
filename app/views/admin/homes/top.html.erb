@@ -1,20 +1,28 @@
-<div class="container-md p-5">
-<h2>注文履歴</h2>
-<table>
-    <thead>
-        <tr>
-            <th>購入日時</th>
-            <th>購入者</th>
-            <th>注文個数</th>
-        </tr>
-    </thead>
-    <tbody>
-      <% @order_details.each do |f| %>
-        <tr>
-            <td><%= link_to f.created_at, admin_order_path(f.order.id), method: :get %></td>
-            <td><%= f.item.name %></td>
-            <td><%= f.amount %></td>
-        </tr>
-     <%end%>
-    </tbody>
+<div class="container-md col-8 p-5">
+  <div class="d-flex bd-highlight mb-3">
+    <h2>注文履歴</h2>
+  </div>
+
+  <div>
+    <table class="table table-hover">
+     <thead class="table-secondary">
+       <tr class="text-center">   
+         <th class="col-4">購入日時</th>
+         <th class="col-4">購入者</th>
+         <th class="col-4">注文個数</th>
+       </tr>
+     </thead>
+
+     <tbody>
+       <% @order_details.each do |f| %>
+         <tr class="text-center">
+          　<td><%= link_to f.created_at, admin_order_path(f.order.id), method: :get %></td>
+          　<td><%= f.item.name %></td>
+          　<td><%= f.amount %></td>
+         </tr>
+       <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
+
