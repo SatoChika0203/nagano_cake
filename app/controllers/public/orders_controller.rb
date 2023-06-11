@@ -7,7 +7,6 @@ end
 
 def index
   @orders=current_customer.orders
-  @order_details=OrderDetail.all
 end
 
 def show

@@ -12,13 +12,13 @@
         <th>注文詳細</th>
       </tr>
     </thead>
-    
+
     <tbody>
      <% @orders.each do |f| %>
       <tr>
         <td class="col-2"><%= f.created_at %></td>
         <td class="col-4"><%= f.postal_code %><%= f.address %><%= f.address_name %></td>
-        <td class="col-2"><% @order_details.each do |t| %><p><%= t.item.name %></p><%end%></td>
+        <td class="col-2"><% f.items.each do |t| %><p><%= t.name %></p><%end%></td>
         <td class="col-2"><%= (f.amount_money.to_i)+(f.postage.to_i) %>円</td>
         <td class="col-2 text-center"><%= link_to '表示する', order_path(f.id), method: :get, class: "btn btn-primary btn-sm" %></td>
       </tr>

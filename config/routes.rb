@@ -1,32 +1,24 @@
 Rails.application.routes.draw do
+    devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+  
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
     resources :items, only: [:index, :show]
     resources :order_details
     get '/customers/information/edit' => 'customers#edit', as: 'customers_information_edit'
-    resource :customers do
+    patch 'customers/information' => 'customers#update', as: 'customers_information'
+    resource :customers, except: [:create, :update, :edit] do
       collection do
         get 'confirm'
         patch 'withdraw'
       end
       # resource :information, only: [:edit]
     end
-
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
-
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: 'admin/sessions'
-  }
-  # 登録とパスワード変更のルーティングを削除する
-
-  # module: URLそのままで、ファイル構成（アクションとコントローラー）のみ指定のパスにしたい
-
-    # get 'customers/information/edit' => 'public/customers#edit', as: 'customers_information_edit'
-
+    
     resources :cart_items, except: [:show, :new] do
       collection do
         delete 'destroy_all'
@@ -39,8 +31,21 @@ Rails.application.routes.draw do
         get 'complete'
       end
     end
+  end
 
-   end
+
+
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions: 'admin/sessions'
+  }
+  # 登録とパスワード変更のルーティングを削除する
+
+  # module: URLそのままで、ファイル構成（アクションとコントローラー）のみ指定のパスにしたい
+
+    # get 'customers/information/edit' => 'public/customers#edit', as: 'customers_information_edit'
+
+
+
 
 
 

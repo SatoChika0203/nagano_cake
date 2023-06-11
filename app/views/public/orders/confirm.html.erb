@@ -14,11 +14,11 @@
       </thead>
       <tbody>
         <% @cart_items.each do |cart_item| %>
-          <tr class="text-center">
-          <td><span class="pr-5"><%= image_tag cart_item.item.image, size: "80x50" %></span><span class="pl-5"><%= cart_item.item.name %></span></td>
-          <td class="pt-4"><%= cart_item.item.with_tax_price %></td>
-          <td class="pt-4"><%= cart_item.amount %></td>
-          <td class="pt-4"><%= cart_item.subtotal %></td>
+          <tr>
+          <td><span class="col-6 pr-5"><%= image_tag cart_item.item.image, size: "80x50" %></span><span class="col-6 pl-5"><%= cart_item.item.name %></span></td>
+          <td class="text-center pt-4"><%= cart_item.item.with_tax_price %></td>
+          <td class="text-center pt-4"><%= cart_item.amount %></td>
+          <td class="text-center pt-4"><%= cart_item.subtotal %></td>
           <% @order.amount_money += cart_item.subtotal %>
           </tr>
          <%end%>

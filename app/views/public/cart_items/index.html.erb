@@ -17,17 +17,17 @@
     
      <tbody>
      <% @cart_items.each do |cart_item| %>
-       <tr class="text-center">
-          <td><span class="pr-4"><%= image_tag cart_item.item.image, size: "100x80" %></span><span class="pl-4"><%= cart_item.item.name %></span></td>
-          <td class="pt-4"><%= cart_item.item.with_tax_price %></td>  <!--税込み単価（消費税の10%を加算）-->
+       <tr>
+          <td><span class="col-6 pr-4"><%= image_tag cart_item.item.image, size: "100x80" %></span><span class="col-6 pl-4"><%= cart_item.item.name %></span></td>
+          <td class="text-center pt-4"><%= cart_item.item.with_tax_price %></td>  <!--税込み単価（消費税の10%を加算）-->
           <%= form_with model: @cart_item, url:cart_item_path(cart_item.id), method: :patch do |f| %>
-          <td class="pt-4"><span class="p-4"><%= f.select :amount, options_for_select(*[1..10], selected: cart_item.amount) %></span><span class="pl-2"><button class="btn btn-success btn-sm" type="submit">変更</button></span></td>
+          <td class="text-center pt-4"><span class="p-4"><%= f.select :amount, options_for_select(*[1..10], selected: cart_item.amount) %></span><span class="pl-2"><button class="btn btn-success btn-sm" type="submit">変更</button></span></td>
           <%= f.hidden_field :item_id, :value => cart_item.item_id %>
           <%= f.hidden_field :customer_id, :value => current_customer.id %>
           <% end %>
     
-          <td class="pt-4"><%= cart_item.subtotal %></td>　　<!--小計（１つの商品✖個数）-->
-          <td class="pt-4"><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
+          <td class="text-center pt-4"><%= cart_item.subtotal %></td>　　<!--小計（１つの商品✖個数）-->
+          <td class="text-center pt-4"><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
        </tr>
      <% end %>
      </tbody>

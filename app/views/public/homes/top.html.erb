@@ -8,10 +8,10 @@
 </div>
 
 <div class="container-md p-5">
-  <h2>新着商品</h2>
+  <h4>新着商品</h4>
     <div class="d-flex justify-content-around">
       <% @items.each do |f| %>
-       <div class="d-flex flex-column">
+       <div class="d-flex flex-column mt-4">
          <p><%= image_tag f.image, size: "150x100" %></p>
          </p><%= f.name %></p>
          </p><%= f.price %>円</p>
