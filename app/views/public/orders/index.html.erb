@@ -3,7 +3,7 @@
 
 <div class="m-5">
   <table class="table table-bordered">
-    <thead class="table-secondary">
+    <thead class="text-center table-secondary">
       <tr>
         <th>注文日</th>
         <th>配送先</th>
@@ -17,8 +17,8 @@
      <% @orders.each do |f| %>
       <tr>
         <td class="col-2"><%= f.created_at %></td>
-        <td class="col-4"><%= f.postal_code %><%= f.address %><%= f.address_name %></td>
-        <td class="col-2"><% f.items.each do |t| %><p><%= t.name %></p><%end%></td>
+        <td class="col-3">〒<%= f.postal_code %><br><%= f.address %><br><%= f.address_name %></td>
+        <td class="col-3"><% f.items.each do |t| %><p><%= t.name %></p><%end%></td>
         <td class="col-2"><%= (f.amount_money.to_i)+(f.postage.to_i) %>円</td>
         <td class="col-2 text-center"><%= link_to '表示する', order_path(f.id), method: :get, class: "btn btn-primary btn-sm" %></td>
       </tr>

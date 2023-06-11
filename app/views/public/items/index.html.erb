@@ -4,19 +4,16 @@
    <div class="d-flex flex-wrap">
   　<% @items.each do |item| %>
   　<div class="d-flex flex-column m-4">
-      <% if item.image.attached? %>
+  　<% if customer_signed_in? %>
+      <%= link_to item_path(item.id) do %>
         <p><%= image_tag item.image, size: "150x100" %></p>
-      <% else %>
-        <p><%= image_tag 'default-image', size: "100x100" %></p>
-      <%end%>
-      
-      <% if customer_signed_in? %>
-        <p><%= link_to item.name, item_path(item.id) %></p>
-      <% else %>
-        <p><%= item.name %></p>
       <% end %>
-      
-        <p><%= item.price %>円</p>
+    <% else %>
+      <p><%= image_tag item.image, size: "150x100" %></p>
+    <% end %>
+
+      <p><%= item.name %></p>      
+      <p><%= item.price %>円</p>
         
       <% if item.is_sales == "sale" %>
         </p>販売中</p>
