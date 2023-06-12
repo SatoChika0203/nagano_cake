@@ -8,10 +8,9 @@ before_action :authenticate_admin!
   def create
     @item=Item.new(item_params)
     if @item.save
-      redirect_to admin_items_path 
-      # items一覧（index)にいく
+      redirect_to admin_item_path(@item.id)
+      # item詳細にいく
     else
-      # @item=Item.new()
       render :new
     end
   end

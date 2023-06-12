@@ -17,11 +17,6 @@ end
 def confirm
   @cart_items=current_customer.cart_items
   @order=current_customer.orders.new(order_params)   #order_paramsの値が入ったインスタンスを生成する
-  # @order_detail=OrderDetail.new(order_detail_params)
-
-  # @order.postal_code = current_customer.postal_code
-  # @order.address = current_customer.address
-  # @order.name = current_customer.first_name + current_customer.last_name
 
   @order.postage=800  #送料
   @order.amount_money=0     #カート内合計金額（each文で、０に足していく）

@@ -7,5 +7,12 @@ class Order < ApplicationRecord
   # 0 が入っている場合は credit_card(クレジットカード)
   # 1 が入ってる場合は transfer(銀行振込)
 
-
+ def order_amount
+   amount = 0
+   order_details.each do |order_detail|
+     amount = amount + order_detail.amount
+   end
+   return amount
+ end
+  # １つのorder内のorder_detailのamountを加算する
 end

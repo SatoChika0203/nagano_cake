@@ -14,11 +14,12 @@
      </thead>
 
      <tbody>
-       <% @order_details.each do |f| %>
+       <% @orders.each do |order| %>
          <tr class="text-center">
-          　<td><%= link_to f.created_at, admin_order_path(f.order.id), method: :get %></td>
-          　<td><%= f.item.name %></td>
-          　<td><%= f.amount %></td>
+          　<td><%= link_to order.created_at, admin_order_path(order.id), method: :get %></td>
+          　<td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+          　<td><%= order.order_amount %></td>
+         　 <!--orderモデルに記述したorder_amount呼び出す-->
          </tr>
        <% end %>
       </tbody>

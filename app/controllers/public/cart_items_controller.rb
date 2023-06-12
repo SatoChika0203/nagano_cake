@@ -3,19 +3,14 @@ class Public::CartItemsController < ApplicationController
   
   def index
     @cart_items=current_customer.cart_items
-
+    @total_money=0
   end
 
   def update
     @cart_item=CartItem.find(params[:id])
-    # cart_item=CartItem.find_by(item_id: params[:item_id])
-    # if cart_item.present?
-      @cart_item.amount = params[:amount].to_i
-      @cart_item.save
-      redirect_to cart_items_path
-    # else
-    #   render 'public/items/show'
-    # end
+    @cart_item.amount = params[:amount].to_i
+    @cart_item.save
+    redirect_to cart_items_path
   end
 
   def destroy

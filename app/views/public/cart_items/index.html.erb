@@ -33,6 +33,12 @@
      </tbody>
      </table>
      
+    <% @cart_items.each do |cart_item| %>
+     <p><% @total_money += cart_item.subtotal %></p>
+    <%end%>
+    
+    <p class="text-right"><strong>合計金額　<%= @total_money %>円</strong></p>
+     
      <div class="m-5">
      <%= link_to '買い物を続ける', root_path, method: :get, class: "btn btn-primary btn-sm" %>
      </div>
